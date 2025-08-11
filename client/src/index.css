@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=VT323&display=swap');
+@import "tailwindcss";
+@layer{
+  *{
+    font-family: "Outfit", sans-serif;
+  }
+}
