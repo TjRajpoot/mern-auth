@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = (props) => {
     axios.defaults.withCredentials=true;
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = "https://mern-auth-backend-i56b.onrender.com"
     const [isLoggedIn, setisLoggedIn] = useState(false)
     const [userData, setUserData] = useState(null)
     
