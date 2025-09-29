@@ -10,16 +10,25 @@ const app = express();
 const port = process.env.PORT || 4000
 connectDB();
 
-const allowedOrigins=['https://mern-auth-frontend-9xyz.onrender.com']
+// FIXED: Include localhost:5173 for local development
+const allowedOrigins = [
+    'http://localhost:5173',  // Your local Vite development server
+    'https://mern-auth-frontend-9xyz.onrender.com'  // Your production frontend
+]
 
 app.use(express.json());
 app.use(cookieParser())
-app.use(cors({ origin:allowedOrigins ,methods:["POST","GET"],credentials:true }))
 
+// FIXED: Proper CORS configuration
+app.use(cors({ 
+    origin: allowedOrigins,
+    methods: ["POST", "GET"],
+    credentials: true 
+}))
 
 //API Endpoints
-app.get('/',(req,res)=>res.send("API Working!"));
+app.get('/', (req, res) => res.send("API Working!"));
 app.use('/api/auth', authRouter)
 app.use('/api/user', userRouter)
 
-app.listen(port,()=>console.log(`Server started on PORT:${port}`));
+app.listen(port, () => console.log(`Server started on PORT:${port}`));
